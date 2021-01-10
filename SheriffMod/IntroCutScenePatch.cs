@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace SheriffMod
 {
-	// Token: 0x0200000B RID: 11
 	[HarmonyPatch]
 	public static class IntroCutScenePatch
 	{
-		// Token: 0x0600001E RID: 30 RVA: 0x00002D48 File Offset: 0x00000F48
 		[HarmonyPatch(typeof(PENEIDJGGAF.CKACLKCOJFO), "MoveNext")]
 		public static void Postfix(PENEIDJGGAF.CKACLKCOJFO __instance)
 		{

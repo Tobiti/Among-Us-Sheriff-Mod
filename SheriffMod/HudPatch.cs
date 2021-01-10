@@ -96,8 +96,7 @@ namespace SheriffMod
 				bool flag2 = FFGALNAPKCD.AllPlayerControls.Count > 1 && PlayerControlPatch.sheriffs != null && PlayerControlPatch.sheriffs.Count > 0;
 				if (flag2)
 				{
-					bool flag3 = PlayerControlPatch.isSheriff(FFGALNAPKCD.LocalPlayer);
-					if (flag3)
+					if (PlayerControlPatch.isSheriff(FFGALNAPKCD.LocalPlayer))
 					{
 						FFGALNAPKCD.LocalPlayer.nameText.Color = new Color(1f, 0.8f, 0f, 1f);
 						HudPatch.KillButton.gameObject.SetActive(true);
@@ -113,8 +112,7 @@ namespace SheriffMod
 					}
 				}
 			}
-			bool flag5 = HudPatch.counter < 30;
-			if (flag5)
+			if (HudPatch.counter < 30)
 			{
 				HudPatch.counter++;
 			}

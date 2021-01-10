@@ -47,8 +47,8 @@ namespace SheriffMod
 					{
 						FFGALNAPKCD playerById = PlayerControlPatch.getPlayerById(ALMCIJKELCP.ReadByte());
 						FFGALNAPKCD playerById2 = PlayerControlPatch.getPlayerById(ALMCIJKELCP.ReadByte());
-						bool flag2 = PlayerControlPatch.isSheriff(playerById);
-						if (flag2)
+						if(playerById.)
+						if (PlayerControlPatch.isSheriff(playerById))
 						{
 							playerById.MurderPlayer(playerById2);
 						}

@@ -5,24 +5,18 @@ using Hazel;
 
 namespace SheriffMod
 {
-	// Token: 0x02000007 RID: 7
 	[HarmonyPatch]
 	public static class KillButtonManager
 	{
-		// Token: 0x06000010 RID: 16 RVA: 0x000026B0 File Offset: 0x000008B0
 		[HarmonyPatch(typeof(MLPJGKEACMM), "PerformKill")]
 		private static bool Prefix(MethodBase __originalMethod)
 		{
-			bool flag = PlayerControlPatch.isSheriff(FFGALNAPKCD.LocalPlayer);
-			bool result;
-			if (flag)
+			if (PlayerControlPatch.isSheriff(FFGALNAPKCD.LocalPlayer))
 			{
-				bool flag2 = PlayerControlPatch.SheriffKillTimer() == 0f;
-				if (flag2)
+				if (PlayerControlPatch.SheriffKillTimer() <= 0f)
 				{
 					double distBetweenPlayers = PlayerControlPatch.getDistBetweenPlayers(FFGALNAPKCD.LocalPlayer, PlayerControlPatch.closestPlayer);
-					bool flag3 = distBetweenPlayers < 1.2000000476837158;
-					if (flag3)
+					if (distBetweenPlayers < 1.2000000476837158)
 					{
 						bool flag4 = !PlayerControlPatch.closestPlayer.NDGFFHMFGIG.DAPKNDBLKIA;
 						if (flag4)
@@ -44,13 +38,9 @@ namespace SheriffMod
 						PlayerControlPatch.lastKilled = DateTime.UtcNow;
 					}
 				}
-				result = false;
+				return false;
 			}
-			else
-			{
-				result = true;
-			}
-			return result;
+			return true;
 		}
 	}
 }
