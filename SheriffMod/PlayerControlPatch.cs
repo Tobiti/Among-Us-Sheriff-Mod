@@ -45,12 +45,15 @@ namespace SheriffMod
 					break;
 				case (byte)CustomRPC.SheriffKill:
 					{
+						SheriffMod.log.LogMessage("SheriffRPC");
 						FFGALNAPKCD playerById = PlayerControlPatch.getPlayerById(ALMCIJKELCP.ReadByte());
 						FFGALNAPKCD playerById2 = PlayerControlPatch.getPlayerById(ALMCIJKELCP.ReadByte());
-						if(playerById.)
-						if (PlayerControlPatch.isSheriff(playerById))
+						if (!playerById.NDGFFHMFGIG.DLPCKPBIJOE)
 						{
-							playerById.MurderPlayer(playerById2);
+							if (PlayerControlPatch.isSheriff(playerById))
+							{
+								playerById.MurderPlayer(playerById2);
+							}
 						}
 						break;
 					}

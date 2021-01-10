@@ -18,8 +18,8 @@ namespace SheriffMod
 					double distBetweenPlayers = PlayerControlPatch.getDistBetweenPlayers(FFGALNAPKCD.LocalPlayer, PlayerControlPatch.closestPlayer);
 					if (distBetweenPlayers < 1.2000000476837158)
 					{
-						bool flag4 = !PlayerControlPatch.closestPlayer.NDGFFHMFGIG.DAPKNDBLKIA;
-						if (flag4)
+						SheriffMod.log.LogMessage("Sheriff KILL");
+						if (!PlayerControlPatch.closestPlayer.NDGFFHMFGIG.DAPKNDBLKIA)
 						{
 							MessageWriter messageWriter = FMLLKEACGIO.Instance.StartRpcImmediately(FFGALNAPKCD.LocalPlayer.NetId, (byte)CustomRPC.SheriffKill, 0, -1);
 							messageWriter.Write(FFGALNAPKCD.LocalPlayer.PlayerId);
