@@ -76,12 +76,15 @@ namespace SheriffMod
 		public static void Postfix(PIEFJFEOGOL __instance)
 		{
 			HudPatch.KillButton = __instance.KillButton;
-			bool flag = OOCJALPKPEP.Instance != null;
-			if (flag)
+			if (OOCJALPKPEP.Instance != null)
 			{
 				HudPatch.updateMeetingHUD(OOCJALPKPEP.Instance);
 			}
 			HudPatch.UpdateGameSettingsText(__instance);
+			if(FFGALNAPKCD.LocalPlayer == null)
+            {
+				return;
+            }
 			bool dlpckpbijoe = FFGALNAPKCD.LocalPlayer.NDGFFHMFGIG.DLPCKPBIJOE;
 			if (dlpckpbijoe)
 			{

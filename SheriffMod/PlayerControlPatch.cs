@@ -193,7 +193,7 @@ namespace SheriffMod
 		[HarmonyPatch(typeof(FFGALNAPKCD), "RpcSyncSettings")]
 		public static void Postfix(KMOGFLPJLLK IOFBPLNIJIC)
 		{
-			if (FMLLKEACGIO.Instance != null)
+			if (FMLLKEACGIO.Instance != null && FFGALNAPKCD.LocalPlayer != null)
 			{
 				MessageWriter messageWriter = FMLLKEACGIO.Instance.StartRpcImmediately(FFGALNAPKCD.LocalPlayer.NetId, (byte)CustomRPC.SyncCustomSettingsShowSheriff, 0, -1);
 				messageWriter.Write(CustomGameOptions.showSheriff);
