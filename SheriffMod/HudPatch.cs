@@ -10,6 +10,11 @@ namespace SheriffMod
 	[HarmonyPatch]
 	public static class HudPatch
 	{
+		private static int counter = 0;
+		private static int countercounter = 0;
+		public static MLPJGKEACMM KillButton = null;
+		private static string GameSettingsText = null;
+
 		public static void FixDeadBodies()
 		{
             System.Collections.Generic.List<DDPGLPLGFOI> list = UnityEngine.Object.FindObjectsOfType<DDPGLPLGFOI>().ToList<DDPGLPLGFOI>();
@@ -93,8 +98,7 @@ namespace SheriffMod
 			}
 			else
 			{
-				bool flag2 = FFGALNAPKCD.AllPlayerControls.Count > 1 && PlayerControlPatch.sheriffs != null && PlayerControlPatch.sheriffs.Count > 0;
-				if (flag2)
+				if (FFGALNAPKCD.AllPlayerControls.Count > 1 && PlayerControlPatch.sheriffs != null && PlayerControlPatch.sheriffs.Count > 0)
 				{
 					if (PlayerControlPatch.isSheriff(FFGALNAPKCD.LocalPlayer))
 					{
@@ -104,8 +108,7 @@ namespace SheriffMod
 						HudPatch.KillButton.SetCoolDown(PlayerControlPatch.SheriffKillTimer(), CustomGameOptions.sheriffCooldown);
 						PlayerControlPatch.closestPlayer = PlayerControlPatch.getClosestPlayer(FFGALNAPKCD.LocalPlayer);
 						double distBetweenPlayers = PlayerControlPatch.getDistBetweenPlayers(FFGALNAPKCD.LocalPlayer, PlayerControlPatch.closestPlayer);
-						bool flag4 = distBetweenPlayers < 1.2;
-						if (flag4)
+						if (distBetweenPlayers < 1.2)
 						{
 							HudPatch.KillButton.SetTarget(PlayerControlPatch.closestPlayer);
 						}
@@ -138,13 +141,5 @@ namespace SheriffMod
 				}
 			}
 		}
-
-		private static int counter = 0;
-
-		private static int countercounter = 0;
-
-		public static MLPJGKEACMM KillButton = null;
-
-		private static string GameSettingsText = null;
 	}
 }

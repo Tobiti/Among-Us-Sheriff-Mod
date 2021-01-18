@@ -78,6 +78,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatPatch.cs" />
     <Compile Include="CustomGameOptions.cs" />
     <Compile Include="CustomRPC.cs" />
     <Compile Include="DecreaseButtonPatch.cs" />

@@ -16,7 +16,7 @@ namespace SheriffMod
 				if (PlayerControlPatch.SheriffKillTimer() <= 0f)
 				{
 					double distBetweenPlayers = PlayerControlPatch.getDistBetweenPlayers(FFGALNAPKCD.LocalPlayer, PlayerControlPatch.closestPlayer);
-					if (distBetweenPlayers < 1.2000000476837158)
+					if (distBetweenPlayers < 1.2f)
 					{
 						SheriffMod.log.LogMessage("Sheriff KILL");
 						if (!PlayerControlPatch.closestPlayer.NDGFFHMFGIG.DAPKNDBLKIA)

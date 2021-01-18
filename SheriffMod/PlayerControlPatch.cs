@@ -19,6 +19,9 @@ namespace SheriffMod
 		[HarmonyPatch(typeof(FFGALNAPKCD), "HandleRpc")]
 		public static void Postfix(byte HKHMBLJFLMC, MessageReader ALMCIJKELCP)
 		{
+			SheriffMod.log.LogMessage(HKHMBLJFLMC);
+			SheriffMod.log.LogMessage(RPC.SendChat);
+			SheriffMod.log.LogMessage(RPC.SendChatNote);
 			switch (HKHMBLJFLMC)
 			{
 				case (byte)CustomRPC.SetSheriff:
@@ -124,21 +127,19 @@ namespace SheriffMod
 
 		public static FFGALNAPKCD getClosestPlayer(FFGALNAPKCD refplayer)
 		{
-			double num = double.MaxValue;
+			double minDistance = double.MaxValue;
 			FFGALNAPKCD result = null;
 			foreach (FFGALNAPKCD ffgalnapkcd in FFGALNAPKCD.AllPlayerControls)
 			{
 				bool dlpckpbijoe = ffgalnapkcd.NDGFFHMFGIG.DLPCKPBIJOE;
 				if (!dlpckpbijoe)
 				{
-					bool flag = ffgalnapkcd.PlayerId != refplayer.PlayerId;
-					if (flag)
+					if (ffgalnapkcd.PlayerId != refplayer.PlayerId)
 					{
-						double distBetweenPlayers = PlayerControlPatch.getDistBetweenPlayers(ffgalnapkcd, refplayer);
-						bool flag2 = distBetweenPlayers < num;
-						if (flag2)
+						double currentDistance = PlayerControlPatch.getDistBetweenPlayers(ffgalnapkcd, refplayer);
+						if (currentDistance < minDistance)
 						{
-							num = distBetweenPlayers;
+							minDistance = currentDistance;
 							result = ffgalnapkcd;
 						}
 					}
