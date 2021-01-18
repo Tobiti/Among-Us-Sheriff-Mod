@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace SheriffMod
 {
+
 	[HarmonyPatch]
 	class DecreaseButtonPatch
-    {
+	{
+		[HarmonyPrefix]
 		[HarmonyPatch(typeof(PCGDGFIAJJI), "Decrease")]
 		public static bool Prefix(PCGDGFIAJJI __instance)
 		{

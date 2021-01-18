@@ -35,7 +35,6 @@ namespace SheriffMod
 				GameOptionMenuPatchUpdate.sheriffCount.Value = CustomGameOptions.sheriffCount;
 				GameOptionMenuPatchUpdate.sheriffCount.ValueText.Text = CustomGameOptions.sheriffCount.ToString();
 
-				UnityEngine.Object.FindObjectsOfType<PCGDGFIAJJI>().ToList<PCGDGFIAJJI>().ForEach(element => SheriffMod.log.LogMessage(element.TitleText.Text));
 				// Create sheriff cooldown label
 				PCGDGFIAJJI impostorCooldownBox = (from x in UnityEngine.Object.FindObjectsOfType<PCGDGFIAJJI>().ToList<PCGDGFIAJJI>()
 										   where x.TitleText.Text == "Emergency Cooldown"

@@ -10,6 +10,7 @@ namespace SheriffMod
 	[HarmonyPatch]
 	public static class IncreaseButtonPatch
 	{
+		[HarmonyPrefix]
 		[HarmonyPatch(typeof(PCGDGFIAJJI), "Increase")]
 		public static bool Prefix(PCGDGFIAJJI __instance)
 		{

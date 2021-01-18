@@ -2,6 +2,7 @@
 using System.Linq;
 using HarmonyLib;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SheriffMod
 {
@@ -15,12 +16,13 @@ namespace SheriffMod
 		[HarmonyPatch(typeof(PHCKLDDNJNP), "Update")]
 		public static void Postfix(PHCKLDDNJNP __instance)
 		{
+
 			BCLDBBKFJPK bcldbbkfjpk = (from x in UnityEngine.Object.FindObjectsOfType<BCLDBBKFJPK>().ToList<BCLDBBKFJPK>()
 			where x.TitleText.Text == "Anonymous Votes"
 			select x).First<BCLDBBKFJPK>();
 			GameOptionMenuPatchUpdate.showSheriff.transform.position = bcldbbkfjpk.transform.position - new Vector3(0f, 5.5f, 0f);
-			GameOptionMenuPatchUpdate.sheriffCount.transform.position = GameOptionMenuPatchUpdate.showSheriff.transform.position - new Vector3(0f, 0.5f, 0f);
-			GameOptionMenuPatchUpdate.sheriffCooldown.transform.position = GameOptionMenuPatchUpdate.sheriffCount.transform.position - new Vector3(0f, 0.5f, 0f);
+			GameOptionMenuPatchUpdate.sheriffCooldown.transform.position = GameOptionMenuPatchUpdate.showSheriff.transform.position - new Vector3(0f, 0.5f, 0f);
+			GameOptionMenuPatchUpdate.sheriffCount.transform.position = GameOptionMenuPatchUpdate.sheriffCooldown.transform.position - new Vector3(0f, 0.5f, 0f);
 		}
 
         internal static void AddToSheriffCooldown(float addValue)
