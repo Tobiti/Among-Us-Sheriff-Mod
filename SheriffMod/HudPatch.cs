@@ -4,6 +4,7 @@ using System.Linq;
 using HarmonyLib;
 using Il2CppSystem.Collections.Generic;
 using UnityEngine;
+using MeetingHUD = OOCJALPKPEP;
 
 namespace SheriffMod
 {
@@ -17,7 +18,7 @@ namespace SheriffMod
 
 		public static void FixDeadBodies()
 		{
-            System.Collections.Generic.List<DDPGLPLGFOI> list = UnityEngine.Object.FindObjectsOfType<DDPGLPLGFOI>().ToList<DDPGLPLGFOI>();
+			System.Collections.Generic.List<DDPGLPLGFOI> list = UnityEngine.Object.FindObjectsOfType<DDPGLPLGFOI>().ToList<DDPGLPLGFOI>();
 			for (int i = 0; i < list.Count - 1; i++)
 			{
 				DDPGLPLGFOI ddpglplgfoi = list[i];
@@ -81,40 +82,18 @@ namespace SheriffMod
 		public static void Postfix(PIEFJFEOGOL __instance)
 		{
 			HudPatch.KillButton = __instance.KillButton;
-			if (OOCJALPKPEP.Instance != null)
+			if (MeetingHUD.Instance != null)
 			{
-				HudPatch.updateMeetingHUD(OOCJALPKPEP.Instance);
+				HudPatch.updateMeetingHUD(MeetingHUD.Instance);
 			}
 			HudPatch.UpdateGameSettingsText(__instance);
-			if(FFGALNAPKCD.LocalPlayer == null)
-            {
+			if (FFGALNAPKCD.LocalPlayer == null)
+			{
 				return;
-            }
-			bool dlpckpbijoe = FFGALNAPKCD.LocalPlayer.NDGFFHMFGIG.DLPCKPBIJOE;
-			if (dlpckpbijoe)
-			{
-				HudPatch.KillButton.gameObject.SetActive(false);
-				HudPatch.KillButton.isActive = false;
 			}
-			else
-			{
-				if (FFGALNAPKCD.AllPlayerControls.Count > 1 && PlayerControlPatch.sheriffs != null && PlayerControlPatch.sheriffs.Count > 0)
-				{
-					if (PlayerControlPatch.isSheriff(FFGALNAPKCD.LocalPlayer))
-					{
-						FFGALNAPKCD.LocalPlayer.nameText.Color = new Color(1f, 0.8f, 0f, 1f);
-						HudPatch.KillButton.gameObject.SetActive(true);
-						HudPatch.KillButton.isActive = true;
-						HudPatch.KillButton.SetCoolDown(PlayerControlPatch.SheriffKillTimer(), CustomGameOptions.sheriffCooldown);
-						PlayerControlPatch.closestPlayer = PlayerControlPatch.getClosestPlayer(FFGALNAPKCD.LocalPlayer);
-						double distBetweenPlayers = PlayerControlPatch.getDistBetweenPlayers(FFGALNAPKCD.LocalPlayer, PlayerControlPatch.closestPlayer);
-						if (distBetweenPlayers < 1.2)
-						{
-							HudPatch.KillButton.SetTarget(PlayerControlPatch.closestPlayer);
-						}
-					}
-				}
-			}
+
+			UpdateKillButton();
+
 			if (HudPatch.counter < 30)
 			{
 				HudPatch.counter++;
@@ -139,6 +118,40 @@ namespace SheriffMod
 				{
 					HudPatch.countercounter = 0;
 				}
+			}
+		}
+
+		private static void UpdateKillButton()
+		{
+			// Check if local player is dead
+			if (FFGALNAPKCD.LocalPlayer.NDGFFHMFGIG.DLPCKPBIJOE)
+			{
+				HudPatch.KillButton.gameObject.SetActive(false);
+				HudPatch.KillButton.isActive = false;
+				return;
+			}
+			if (FFGALNAPKCD.AllPlayerControls.Count > 1 && PlayerControlPatch.sheriffs != null && PlayerControlPatch.sheriffs.Count > 0)
+			{
+				if (PlayerControlPatch.isSheriff(FFGALNAPKCD.LocalPlayer))
+				{
+					if (MeetingHUD.Instance == null)
+					{
+						FFGALNAPKCD.LocalPlayer.nameText.Color = new Color(1f, 0.8f, 0f, 1f);
+						HudPatch.KillButton.gameObject.SetActive(true);
+						HudPatch.KillButton.isActive = true;
+						HudPatch.KillButton.SetCoolDown(PlayerControlPatch.SheriffKillTimer(), CustomGameOptions.sheriffCooldown);
+						PlayerControlPatch.closestPlayer = PlayerControlPatch.getClosestPlayer(FFGALNAPKCD.LocalPlayer);
+						double distBetweenPlayers = PlayerControlPatch.getDistBetweenPlayers(FFGALNAPKCD.LocalPlayer, PlayerControlPatch.closestPlayer);
+						if (distBetweenPlayers < 1.2)
+						{
+							HudPatch.KillButton.SetTarget(PlayerControlPatch.closestPlayer);
+						}
+					}
+					else
+					{
+						HudPatch.KillButton.isActive = false;
+					}
+				} 
 			}
 		}
 	}

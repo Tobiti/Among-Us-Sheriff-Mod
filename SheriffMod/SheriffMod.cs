@@ -12,7 +12,7 @@ using HarmonyLib;
 namespace SheriffMod
 {
 	// Token: 0x02000004 RID: 4
-	[BepInPlugin("org.bepinex.plugins.SheriffMod", "Sheriff Mod", "1.0.1.0")]
+	[BepInPlugin("org.bepinex.plugins.SheriffMod", "Sheriff Mod", "1.2.5")]
 	public class SheriffMod : BasePlugin
 	{
 		public ConfigEntry<string> Name { get; set; }
