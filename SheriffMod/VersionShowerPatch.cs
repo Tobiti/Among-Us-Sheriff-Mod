@@ -9,7 +9,7 @@ namespace SheriffMod
 		public static void Postfix(BOCOFLHKCOJ __instance)
 		{
 			AELDHKGBIFD text = __instance.text;
-			text.Text += "\nSheriff Mod v1.2 by Tobiti/Woodi-dev";
+			text.Text += "\nSheriff Mod v1.2.5 by Tobiti/Woodi-dev";
 		}
 	}
 }
